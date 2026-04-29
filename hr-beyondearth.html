@@ -1607,9 +1607,8 @@ async function forceReloadData(){
     // 현재 페이지 렌더링
     const activePage = document.querySelector('.nav-item.active')?.getAttribute('onclick')?.match(/'([^']+)'/)?.[1] || 'apply';
     renderPage(activePage);
-    // 직원관리 패널이 열려있으면(PIN 통과 상태) 테이블 갱신
-    const adminPanel = document.getElementById('admin-panel');
-    if(adminPanel && adminPanel.style.display !== 'none') renderAdminTable();
+    // 직원관리 테이블 항상 갱신 (SP 추가/삭제 즉시 반영, 패널 열림 여부 무관)
+    renderAdminTable();
     // 드롭다운 갱신
     syncEmpSelect();
     toast('✅ 데이터 새로고침 완료 (SP 최신값 반영)');
